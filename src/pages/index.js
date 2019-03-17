@@ -1,26 +1,42 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
-import Image from "../components/image"
-import SEO from "../components/seo"
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 export const IndexPage = ({data}) => (
   <Layout>
-            <div dangerouslySetInnerHTML={{ __html: data.allMarkdownRemark.edges[0].node.html }} />
+    <div className="row">
+    {data.allMarkdownRemark.edges.map(function(edge){
+      return <div  className="col-sm-6">
+              <div key = {edge.node.frontmatter.date} className="card">
+                      <div className="card-body">
+                        <h5 className="card-title">{edge.node.frontmatter.title}</h5>
+                      </div>
+                  </div>
+            </div>
+    })}
+    </div>
+    
+
+      
   </Layout>
 )
 
 export const query = graphql `
-  query {
-    allMarkdownRemark{
-      edges{
-        node{
-          html
+query{
+  allMarkdownRemark{
+    edges{
+      node{
+        frontmatter{
+          title,
+          date
         }
       }
     }
   }
+}
 `
 
 export default IndexPage

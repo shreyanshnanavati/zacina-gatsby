@@ -8,6 +8,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { StaticQuery, graphql } from "gatsby"
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Header from "./header"
 import "./layout.css"
@@ -26,16 +27,12 @@ const Layout = ({ children }) => (
     render={data => (
       <>
         <Header siteTitle={data.site.siteMetadata.title} />
-        <div
-          style={{
-            margin: `3rem auto`, maxWidth: 650, padding: `0 1rem`
-          }}
+        <div className = "container"
         >
           <main>{children}</main>
           <footer>
             © {new Date().getFullYear()}, Built with
             {` `}
-            <a href="https://www.gatsbyjs.org">Gatsby</a>
           </footer>
         </div>
       </>
