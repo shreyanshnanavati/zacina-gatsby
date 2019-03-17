@@ -4,7 +4,9 @@ module.exports = {
     description: `Healthier Life, Our Mission`,
     author: `@shreyansh`,
   },
+  
   plugins: [
+    `gatsby-plugin-netlify-cms`,  
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -13,7 +15,6 @@ module.exports = {
         path: `${__dirname}/src/`,
       },
     },
-    `gatsby-plugin-netlify-cms`
     `gatsby-transformer-sharp`,
     `gatsby-transformer-remark`,
     `gatsby-plugin-sharp`,
